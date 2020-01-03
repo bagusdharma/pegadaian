@@ -73,7 +73,9 @@
         <div id="collapseSurat" class="collapse" aria-labelledby="headingSurat" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
-            <a class="collapse-item" href="<?= base_url('surat_keluar'); ?>">Surat Keluar</a>
+            <!-- <a class="collapse-item" href="<?= base_url('surat_masuk'); ?>">Surat Masuk</a> -->
+            <!-- <a class="collapse-item" href="<?= base_url('surat_keluar'); ?>">Surat Keluar</a> -->
+            <a class="collapse-item" href="<?= base_url('surat'); ?>">Agenda</a> 
             <a class="collapse-item" href="<?= base_url('surat_perjalanan'); ?>">Surat Ekspedisi</a> 
           
           </div>
@@ -92,17 +94,17 @@
         </div>
       </li>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent" aria-expanded="true" aria-controls="collapseEvent">
           <i class="fas fa-fw fa-calendar"></i>
           <span>E-Event</span>
         </a>
         <div id="collapseEvent" class="collapse" aria-labelledby="headingEvent" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?= base_url('event'); ?>">Calendar Event</a>
+            <a class="collapse-item" href="<?= base_url('evencal'); ?>">Calendar Event</a>
           </div>
         </div>
-      </li>
+      </li> -->
 
       <?php endif;?>
       

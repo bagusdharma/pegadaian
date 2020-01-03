@@ -139,4 +139,53 @@ class Surat_model extends CI_Model
         $this->db->update('surat_perjalanan', $data);
     }
 
+    //    SURAT Masuk MODEL 
+
+    public function getAllSuratMasuk()
+    {
+        $this->db->order_by("no_berkas", "DESC");
+        // $data = $this->db->get('surat-keluar')->result_array();
+        return $this->db->get('surat_masuk')->result_array();
+        // echo json_encode($data);
+        // die;
+    }
+
+    public function tambahSuratMasuk()
+    {
+        $data = [
+            'no_berkas' => $this->input->post('no_berkas', true),
+            'full_number' => $this->input->post('full_number', true),
+            'pengirim_berkas' => $this->input->post('pengirim_berkas', true),
+            'tanggal_suratmasuk' => date("Y-m-d"),
+            'perihal_suratmasuk' => $this->input->post('perihal_suratmasuk', true)
+        ];
+
+        $this->db->insert('surat_masuk', $data);
+    }
+
+
+// New Gabungan Surat Keluar dan Surat Masuk
+
+    public function getAllSurat()
+    {
+        $this->db->order_by("no_berkas", "DESC");
+        // $data = $this->db->get('surat-keluar')->result_array();
+        return $this->db->get('surat_baru')->result_array();
+        // echo json_encode($data);
+        // die;
+    }
+
+    public function tambahSurat()
+    {
+        $data = [
+            'no_berkas' => $this->input->post('no_berkas', true),
+            'full_number' => $this->input->post('full_number', true),
+            'alamat_surat' => $this->input->post('alamat_surat', true),
+            'tanggal_surat' => date("Y-m-d"),
+            'perihal_surat' => $this->input->post('perihal_surat', true),
+            'jenis_surat' => $this->input->post('jenis_surat', true)
+        ];
+
+        $this->db->insert('surat_baru', $data);
+    }
 }
