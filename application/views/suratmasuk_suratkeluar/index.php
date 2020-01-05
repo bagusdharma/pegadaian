@@ -139,7 +139,7 @@
 					</div>
                     <div class="row mt-3">
 						<div class="col-md-4 mt-2">
-							<label for="perihal_suratmasuk">Perihal</label>
+							<label for="perihal_surat">Perihal</label>
 						</div>
 						<div class="col-md-8">
 							<input required type="text" name="perihal_surat" id="perihal_surat" placeholder="Perihal Surat" class="form-control">
@@ -168,3 +168,176 @@
 	</div>
 </div>
 
+
+<!-- Detail Surat  -->
+
+<?php foreach($surat as $s) : ?>
+<!-- Modal -->
+<!-- perhatikan ini masukin id data ke modal = tulis di id="" -->
+<div class="modal fade" id="detailModal<?= $s['id_surat']; ?>" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="detailModalLabel">Detail Surat</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<!-- Perhatikan ini actionnya buat form sebelum modal body-->
+			<form action="<?= base_url('surat/detail')?>" class="form-group" method="post">
+				<div class="modal-body">
+					<div class="container">
+
+                        <div class="row">
+                            <div class="col-md-4 mt-2">
+                                <label for="no_berkas">Nomor Surat</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input readonly type="text" value="<?= $s['no_berkas']. " / " .$s['full_number'];?>" name="no_berkas" id="no_berkas" placeholder="Awal Nomor Surat (contoh: 10)" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4 mt-2">
+                                <label for="alamat_surat">Alamat Surat</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input readonly value="<?= $s['alamat_surat'];?>" type="text" name="alamat_surat" id="alamat_surat" placeholder="Alamat Surat" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4 mt-2">
+                                <label for="perihal_surat">Perihal</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input readonly value="<?= $s['perihal_surat'];?>" type="text" name="perihal_surat" id="perihal_surat" placeholder="Perihal Surat" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4 mt-2">
+                                <label for="tanggal_surat">Tanggal Surat</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input readonly value="<?= $s['tanggal_surat'];?>" type="date" name="tanggal_surat" id="tanggal_surat" placeholder="Tanggal Surat" class="form-control">
+                            </div>
+                        </div>
+                        
+
+						<div class="row mt-3">
+							<div class="col-md-4 mt-2">
+								<label for="jenis_surat">Jenis Surat</label>
+							</div>
+							<div class="col-md-8 mt-2">
+								<select name="jenis_surat" id="jenis_surat" class="form-control" readonly>
+									<?php if($s['id_surat'] == 1) : ?>
+									<option value="<?= $s['id_surat']; ?>" selected>Surat Masuk</option>
+                                    <?php else: ?>
+                                        <option value="<?= $s['id_surat']; ?>">Surat Keluar</option>
+									<?php endif; ?>
+								</select>
+							</div>
+						</div>
+					</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+		</div>
+	</div>
+</div>
+</div>
+<?php endforeach; ?>
+
+
+
+<!-- MODAL EDIT SURAT  -->
+
+<?php foreach($surat as $s) : ?>
+<!-- Modal -->
+<!-- perhatikan ini masukin id data ke modal = tulis di id="" -->
+<div class="modal fade" id="editModal<?= $s['id_surat']; ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="editModalLabel">Edit Surat </h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<!-- Perhatikan ini actionnya buat form sebelum modal body-->
+			<form action="<?= base_url('surat/edit')?>" class="form-group" method="post">
+				<div class="modal-body">
+					<input type="hidden" name="id_surat" value="<?= $s['id_surat']; ?>">
+					<div class="container">
+						
+                    <div class="row">
+                        <div class="col-md-4 mt-2">
+                            <label for="no_berkas">Nomor Surat</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input required type="number" value="<?= $s['no_berkas'];?>" name="no_berkas" id="no_berkas" placeholder="Awal Nomor Surat (contoh: 10)" class="form-control">
+                            </div>
+                        </div>
+                    <div class="row mt-3">
+						<div class="col-md-4 mt-2">
+							<label for="full_number">Full Surat</label>
+						</div>
+						<div class="col-md-8">
+							<input required type="text" value="<?= $s['full_number'];?>" name="full_number" id="full_number" placeholder="Lanjutan (contoh: S.00029.03/2020)" class="form-control">
+						</div>
+					</div>
+                        <div class="row mt-3">
+                            <div class="col-md-4 mt-2">
+                                <label for="alamat_surat">Alamat Surat</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input required value="<?= $s['alamat_surat'];?>" type="text" name="alamat_surat" id="alamat_surat" placeholder="Alamat Surat" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4 mt-2">
+                                <label for="perihal_surat">Perihal</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input required value="<?= $s['perihal_surat'];?>" type="text" name="perihal_surat" id="perihal_surat" placeholder="Perihal Surat" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4 mt-2">
+                                <label for="tanggal_surat">Tanggal Surat</label>
+                            </div>
+                            <div class="col-md-8">
+                                <input readonly value="<?= $s['tanggal_surat'];?>" type="date" name="tanggal_surat" id="tanggal_surat" placeholder="Tanggal Surat" class="form-control">
+                            </div>
+                        </div>
+						<div class="row mt-3">
+							<div class="col-md-4 mt-2">
+								<label for="jenis_surat">Jenis Surat</label>
+							</div>
+							<div class="col-md-8 mt-2">
+								<select name="jenis_surat" id="jenis_surat" class="form-control" readonly>
+									<?php if($s['id_surat'] == 1) : ?>
+									<option value="<?= $s['id_surat']; ?>" selected>Surat Masuk</option>
+                                    <?php else: ?>
+                                        <option value="<?= $s['id_surat']; ?>">Surat Keluar</option>
+									<?php endif; ?>
+								</select>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Update</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<?php endforeach; ?>

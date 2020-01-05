@@ -53,7 +53,7 @@ class Surat extends CI_Controller
 
     public function hapus($id)
     {
-        $this->Surat_model->hapusSuratKeluar($id);
+        $this->Surat_model->hapusSurat($id);
         $this->session->set_flashdata('message', 'Dihapus');
             redirect('surat');
     }
@@ -65,26 +65,19 @@ class Surat extends CI_Controller
 
     public function edit()
     {
-        // $data = [
-        //     'no_surat' => $this->input->post('no_surat', true),
-        //     'jenis_id' => $this->input->post('jenis_id', true),
-        //     'bagian_id' => $this->input->post('bagian_id', true),
-        //     'alamat_tujuan' => $this->input->post('alamat_tujuan', true),
-        //     'tanggal_surat' => date("Y-m-d"),
-        //     'perihal' => $this->input->post('perihal', true)
-        // ];
+        $this->form_validation->set_rules('no_berkas', 'Full Surat', 'required');
+        $this->form_validation->set_rules('full_number', 'Full Surat', 'required');
+        $this->form_validation->set_rules('alamat_surat', 'Alamat Surat', 'required');
+        $this->form_validation->set_rules('perihal_surat', 'Perihal', 'required');
 
-        // $this->db->where()
-        $this->form_validation->set_rules('no_surat', 'Nomor Surat', 'required|numeric|is_unique[surat-keluar.no_surat]', array(
-            'is_unique' => 'Nomor Surat Sudah dipakai'
-        ));
-        $this->form_validation->set_rules('jenis_id', 'Jenis Surat', 'required');
-        $this->form_validation->set_rules('bagian_id', 'Kode Unit Bagian', 'required');
-        $this->form_validation->set_rules('perihal', 'Perihal', 'required');
-
-        $this->Surat_model->editSuratKeluar();
-        $this->session->set_flashdata('message', 'Di-Update');
-            redirect('surat_keluar');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('message_gagal', 'Input Data Surat');
+            redirect('surat'); 
+        } else {
+            $this->Surat_model->editSurat();
+            $this->session->set_flashdata('message', 'Di-Update');
+            redirect('surat');
+        }
     }
 
 }

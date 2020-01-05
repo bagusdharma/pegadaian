@@ -188,4 +188,23 @@ class Surat_model extends CI_Model
 
         $this->db->insert('surat_baru', $data);
     }
+
+    public function hapusSurat($id)
+    {
+        // $this->db->where('id', $id);
+        $this->db->delete('surat_baru', ['id_surat' => $id]);
+    }
+
+    public function editSurat()
+    {
+        $data = [
+            'no_berkas' => $this->input->post('no_berkas', true),
+            'full_number' => $this->input->post('full_number', true),
+            'alamat_surat' => $this->input->post('alamat_surat', true),
+            'perihal_surat' => $this->input->post('perihal_surat', true)
+        ];
+        
+        $this->db->where('id_surat', $this->input->post('id_surat'));
+        $this->db->update('surat_baru', $data);
+    }
 }
