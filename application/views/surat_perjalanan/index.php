@@ -17,7 +17,10 @@
 	<div class="row mt-3">
 		<div class="col-md-6">
 			<a href="<?= base_url(); ?>surat_perjalanan/tambah" class="btn btn-primary" data-toggle="modal"
-				data-target="#exampleModal">Tambah Surat Ekspedisi</a>
+				data-target="#exampleModal"><span class="fas fa-fw fa-plus"></span>Tambah Surat Ekspedisi</a>
+		</div>
+		<div class="col-md-6">
+			<a href="<?= base_url(); ?>Laporan_suratekspedisi" class="btn btn-success float-right" ><span class="fas fa-fw fa-print"></span> Cetak Surat Ekspedisi</a>
 		</div>
 	</div>
 
@@ -41,7 +44,7 @@
 						</tr>
 					</thead>
 
-					<tbody>
+					<tbody class="text-center">
 						<?php $i=1; ?>
 						<?php foreach($surat_perjalanan as $sp) : ?>
 						<tr>
@@ -50,7 +53,8 @@
 							<td><?= $sp['alamat_pengiriman']; ?></td>
 							<td><?= $sp['isi_surat']; ?></td>
 							<td>
-								<?= $sp['no_resi']?>
+							<!-- <?= $sp['no_resi']?> -->
+								<a href="<?php site_url('cekresi.com/');?><?php echo $sp['no_resi']?>"><?= $sp['no_resi']?></a>
 							</td>
 							<td><?= $sp['tujuan_pengiriman']; ?></td>
 							<td>
@@ -91,6 +95,41 @@
 	</div>
 
 </div>
+
+<!-- Sweet Alert Delete Data -->
+
+<!-- <script>
+  function deletedata(id)
+  {
+    swal({
+      title: "Anda Yakin?",
+      text: "Data <?php echo $row->nama; ?> Akan Dihapus Secara Permanen!",
+      type: "warning",
+      showCancelButton: true,
+      // confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false
+    },
+    function(){
+      $.ajax({
+          url: "<?php echo base_url('c_mahasiswa/DeleteMahasiswa/') ?>",
+          type: "post",
+          data: {id:id},
+          success:function(){
+            swal('Data Berhasil Di Hapus', ' ', 'success');
+            $("#delete"+id).fadeTo("slow", 0.7, function(){
+              $(this).remove();
+            })
+
+          },
+          error:function(){
+            swal('data gagal di hapus', 'error');
+          }
+      });
+      
+    });
+  }
+</script> -->
 
 <!-- Tambah data surat perjalanan -->
 

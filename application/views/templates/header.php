@@ -27,6 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url()?>assets/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="<?= base_url();?>assets/css/colorbox.css" />
 	<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.colorbox-min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 
