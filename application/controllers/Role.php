@@ -10,7 +10,9 @@ class Role extends CI_Controller
         if(!$this->session->userdata('NIK')){
             redirect('auth');
         }
-        // is_logged_in();
+        if(!$this->session->userdata('role_id') == 3){
+            redirect('auth/blocked');
+        }
     }
 
     public function index()

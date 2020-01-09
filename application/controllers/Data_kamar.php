@@ -10,6 +10,9 @@ class Data_kamar extends CI_Controller
         if(!$this->session->userdata('NIK')){
             redirect('auth');
         }
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         // is_logged_in();
     }
 

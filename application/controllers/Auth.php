@@ -130,17 +130,17 @@ class Auth extends CI_Controller
         redirect('auth');
     }
 
-    // public function blocked()
-    // {
-    //     $data['title'] = 'Access Blocked';
+    public function blocked()
+    {
+        $data['title'] = 'Access Blocked';
 
-    //     $data['user'] = $this->db->get_where('user', ['NIK' => $this->session->userdata('NIK')])->row_array();
+        $data['user'] = $this->db->get_where('user', ['NIK' => $this->session->userdata('NIK')])->row_array();
 
-    //     $this->load->view('templates/header', $data);
-    //     // $this->load->view('templates/sidebar', $data);
-    //     // $this->load->view('templates/topbar', $data);
-    //     $this->load->view('auth/404', $data);
-    //     $this->load->view('templates/footer');
-    // }
+        $this->load->view('templates/header', $data);
+        // $this->load->view('templates/sidebar', $data);
+        // $this->load->view('templates/topbar', $data);
+        $this->load->view('auth/404', $data);
+        $this->load->view('templates/footer');
+    }
 
 }

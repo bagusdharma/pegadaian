@@ -9,6 +9,9 @@ class Calendar extends CI_Controller
         if(!$this->session->userdata('NIK')){
             redirect('auth');
         }
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->load->model('Calendar_model');
         // is_logged_in();
     }
