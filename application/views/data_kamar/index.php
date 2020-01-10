@@ -62,7 +62,7 @@
 	</div>
 </div>
 
-<!-- Tambah data surat perjalanan -->
+<!-- Tambah data kamar -->
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

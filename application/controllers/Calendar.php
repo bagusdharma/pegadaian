@@ -54,6 +54,7 @@ class Calendar extends CI_Controller
             );
             $this->Calendar_model->insert_event($data);
         }
+        redirect('calendar');
     }
 
     public function update()
@@ -76,4 +77,5 @@ class Calendar extends CI_Controller
             $this->Calendar_model->delete_event($this->input->post('id'));
         }
     }
+
 }

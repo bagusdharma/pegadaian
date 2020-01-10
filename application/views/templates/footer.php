@@ -43,7 +43,9 @@
   <!-- Bootstrap core JavaScript-->
   <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script> -->
+  <script language="javascript" src="https://momentjs.com/downloads/moment.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
 
 
@@ -57,27 +59,60 @@
   <script src="<?= base_url('assets/'); ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
   <!-- Page level custom scripts -->
   <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
-	<!-- <script>
-		  $('.form-check-input').on('click', function() {
-			  const menuId = $(this).data('menu');
-			  const roleId = $(this).data('role');
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
 
-			  $.ajax({
-				url: "<?= base_url('admin/changeaccess'); ?>",
-				type: 'post',
-				data: {
-					menuId: menuId,
-					roleId: roleId
-				},
-				success: function() {
-					document.location.href = "<?= base_url('admin/roleaccess/'); ?>" + roleId;
-				} 
-			  })
-		  })
-	</script> -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
+
+<!-- Pop up datepicker -->
+<style type="text/css">
+        /* solution 1: */
+        .datepicker {
+            font-size: 0.875em;
+        }
+        /* solution 2: the original datepicker use 20px so replace with the following:*/
+        
+        .datepicker td, .datepicker th {
+            width: 1.5em;
+            height: 1.5em;
+        }
+        
+</style>
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker1').datetimepicker({
+      locale: 'id',
+      format: 'Y-MM-DD HH:mm',
+      icons: {
+        time: "fa fa-clock",
+        date: "fa fa-calendar",
+        up: "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+      }
+    });
+});
+</script>
+
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker2').datetimepicker({
+      locale: 'id',
+      format: 'Y-MM-DD HH:mm',
+      icons: {
+        time: "fa fa-clock",
+        date: "fa fa-calendar",
+        up: "fa fa-arrow-up",
+        down: "fa fa-arrow-down"
+      }
+    });
+});
+</script>
+
+
+<!-- Upload foto profile -->
  <script>
 	$('.custom-file-input').on('change', function() {
 		let fileName = $(this).val().split('\\').pop()
@@ -85,6 +120,7 @@
 	});
  </script>
 
+<!-- Full Calendar lama  -->
 <script>
   $(document).ready(function(){
     var calendar = $('#calendar').fullCalendar({
@@ -102,8 +138,8 @@
         var title = prompt("Enter Event Title");
         if(title)
         {
-          var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-          var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+          var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm");
+          var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm");
           $.ajax({
             url:"<?= base_url(); ?>calendar/insert",
             type:"POST",
@@ -119,8 +155,8 @@
       editable:true,
       eventResize:function(event)
       {
-        var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-        var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+        var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm");
+        var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm");
         var title = event.title;
 
         var id = event.id;
@@ -137,8 +173,8 @@
       },
       eventDrop:function(event)
       {
-        var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-        var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+        var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm");
+        var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm");
         var title = event.title;
         var id = event.id;
         $.ajax({
