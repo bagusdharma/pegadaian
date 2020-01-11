@@ -66,6 +66,8 @@
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script> -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.3/js/bootstrap-colorpicker.min.js"></script>  
+
 
 <!-- Pop up datepicker -->
 <style type="text/css">
@@ -95,7 +97,6 @@
     });
 });
 </script>
-
 <script type="text/javascript">
   $(function () {
     $('#datetimepicker2').datetimepicker({
@@ -111,6 +112,14 @@
 });
 </script>
 
+<!-- color picker  -->
+<script>
+    $('#color').colorpicker({});
+    // Example using an event, to change the color of the .jumbotron background:
+    // $('#color').on('colorpickerChange', function(event) {
+    //     $('.jumbotron').css('background-color', event.color.toString());
+    //   });
+</script>
 
 <!-- Upload foto profile -->
  <script>
@@ -123,6 +132,7 @@
 <!-- Full Calendar lama  -->
 <script>
   $(document).ready(function(){
+    $('#calendar').css('font-size', '1.2em');
     var calendar = $('#calendar').fullCalendar({
       editable:true,
       header:{
@@ -132,6 +142,7 @@
       },
       events:"<?php echo base_url(); ?>calendar/load",
       selectable:true,
+      eventTextColor:'white',
       selectHelper:true,
       select:function(start, end, allDay)
       {
@@ -143,7 +154,7 @@
           $.ajax({
             url:"<?= base_url(); ?>calendar/insert",
             type:"POST",
-            data:{title:title, start:start, end:end},
+            data:{title:title, color:color, start:start, end:end},
             success:function()
             {
               calendar.fullCalendar('refetchEvents');
@@ -158,12 +169,13 @@
         var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm");
         var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm");
         var title = event.title;
+        var color = event.color;
 
         var id = event.id;
         $.ajax({
           url:"<?= base_url(); ?>calendar/update",
           type:"POST",
-          data:{title:title, start:start, end:end},
+          data:{title:title, color:color, start:start, end:end},
           success:function()
           {
             calendar.fullCalendar('refetchEvents');
@@ -176,11 +188,12 @@
         var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm");
         var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm");
         var title = event.title;
+        var color = event.color;
         var id = event.id;
         $.ajax({
           url:"<?= base_url(); ?>calendar/update",
           type:"POST",
-          data:{title:title, start:start, end:end, id:id},
+          data:{title:title, color:color, start:start, end:end, id:id},
           success:function()
           {
             calendar.fullCalendar('refetchEvents');
@@ -209,6 +222,8 @@
     });
   });
 </script>
+
+
 
 </body>
 

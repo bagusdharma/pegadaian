@@ -3,6 +3,9 @@
 		.header {
 			color: black;
 		}
+		.font-size{
+			font-size:14px;
+		}
 
 	</style>
 
@@ -12,7 +15,7 @@
 				data-target="#exampleModal"><span class="fa fas-fw fa-plus"></span> Tambah Event </a>
 		</div>
 	</div>
-	<div id="calendar" class="header">
+	<div id="calendar" class="header font-size">
 	</div>
 </div>
 
@@ -35,7 +38,15 @@
 							<label for="title">Title Event</label>
 						</div>
 						<div class="col-md-8">
-							<input type="text" class="form-control" name="title" placeholder="Nama Event Kegiatan">
+							<input type="text" required class="form-control" name="title" placeholder="Nama Event Kegiatan">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 mt-2">
+							<label for="color">Color</label>
+						</div>
+						<div class="col-md-8 mt-2">
+							<input type="text" required class="form-control" name="color" id="color" placeholder="Color">
 						</div>
 					</div>
 					<div class="row">
@@ -45,7 +56,7 @@
 						<div class="col-md-8 mt-2">
 							<div class="form-group">
 								<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-									<input placeholder="Start Event" type="text" class="form-control datetimepicker-input"
+									<input required placeholder="Start Event" type="text" class="form-control datetimepicker-input"
 										data-target="#datetimepicker1" name="start">
 									<div class="input-group-append" data-target="#datetimepicker1"
 										data-toggle="datetimepicker">
@@ -62,7 +73,7 @@
 						<div class="col-md-8 mt-2">
 							<div class="form-group">
 								<div class="input-group date" id="datetimepicker2" data-target-input="nearest">
-									<input placeholder="End Event" type="text" class="form-control datetimepicker-input"
+									<input required placeholder="End Event" type="text" class="form-control datetimepicker-input"
 										data-target="#datetimepicker2" name="end">
 									<div class="input-group-append" data-target="#datetimepicker2"
 										data-toggle="datetimepicker">

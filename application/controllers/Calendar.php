@@ -36,6 +36,7 @@ class Calendar extends CI_Controller
             $data[] = array(
                 'id' => $row['id_event'],
                 'title' => $row['title'],
+                'color' => $row['color'],
                 'start' => $row['start_date'],
                 'end' => $row['end_date']
             );
@@ -49,6 +50,7 @@ class Calendar extends CI_Controller
         {
             $data = array(
                 'title' => $this->input->post('title'),
+                'color' => $this->input->post('color'),
                 'start_date' => $this->input->post('start'),
                 'end_date' => $this->input->post('end')
             );
