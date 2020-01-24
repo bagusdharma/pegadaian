@@ -10,9 +10,9 @@ class Surat_perjalanan extends CI_Controller
         if(!$this->session->userdata('NIK')){
             redirect('auth');
         }
-        if($this->session->userdata('role_id') == 2){
-            redirect('auth/blocked');
-        }
+        // if($this->session->userdata('role_id') == 2){
+        //     redirect('auth/blocked');
+        // }
     }
 
     public function index()
@@ -32,6 +32,9 @@ class Surat_perjalanan extends CI_Controller
 
     public function tambah()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->form_validation->set_rules('alamat_pengiriman', 'Alamat Pengiriman', 'required');
         $this->form_validation->set_rules('isi_surat', 'Isi Surat', 'required');
        
@@ -46,6 +49,9 @@ class Surat_perjalanan extends CI_Controller
 
     public function hapus($id)
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->Surat_model->hapusSuratPerjalanan($id);
         $this->session->set_flashdata('message', 'Dihapus');
             redirect('surat_perjalanan');
@@ -53,6 +59,9 @@ class Surat_perjalanan extends CI_Controller
 
     public function inputResi()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->form_validation->set_rules('no_resi', 'No Resi', 'required');
         $this->form_validation->set_rules('kurir_id', 'Kurir ID', 'required');
        
@@ -67,11 +76,15 @@ class Surat_perjalanan extends CI_Controller
 
     public function detail($id)
     {
+        
         $data['getId'] = $this->Surat_model->getSuratPerjalananById($id);   
     }
 
     public function edit()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->form_validation->set_rules('alamat_pengiriman', 'Alamat Pengiriman', 'required');
         $this->form_validation->set_rules('isi_surat', 'Isi Surat', 'required');
         $this->form_validation->set_rules('tujuan_pengiriman', 'Tujuan Pengiriman', 'required');

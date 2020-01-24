@@ -13,7 +13,7 @@
 	<?php endif; ?>
 
 	<?= validation_errors(); ?>
-
+	<?php if($this->session->userdata('role_id') == 1 || $this->session->userdata('role_id') == 3) : ?>
 	<div class="row mt-3">
 		<div class="col-md-6">
 			<a href="<?= base_url(); ?>surat_perjalanan/tambah" class="btn btn-primary" data-toggle="modal"
@@ -23,6 +23,7 @@
 			<a href="<?= base_url(); ?>Laporan_suratekspedisi" class="btn btn-success float-right" ><span class="fas fa-fw fa-print"></span> Cetak Surat Ekspedisi</a>
 		</div>
 	</div>
+	<?php endif;?>
 
 	<div class="card shadow mb-4 mt-3">
 		<div class="card-header py-3">
@@ -53,8 +54,8 @@
 							<td><?= $sp['alamat_pengiriman']; ?></td>
 							<td><?= $sp['isi_surat']; ?></td>
 							<td>
-							<!-- <?= $sp['no_resi']?> -->
-								<a href="<?php site_url('cekresi.com/');?><?php echo $sp['no_resi']?>"><?= $sp['no_resi']?></a>
+							<?= $sp['no_resi']?>
+								<!-- <a href="<?php site_url('cekresi.com/');?><?php echo $sp['no_resi']?>"><?= $sp['no_resi']?></a> -->
 							</td>
 							<td><?= $sp['tujuan_pengiriman']; ?></td>
 							<td>
@@ -67,18 +68,22 @@
 								<?php endforeach;?>
 
 							<td>
+							<?php if($this->session->userdata('role_id') == 1 || $this->session->userdata('role_id') == 3) : ?>
 								<a href="<?= base_url(); ?>surat_perjalanan/input_resi/<?= $sp['id']?>"
 									class="btn btn-sm btn-success" data-toggle="modal"
 									data-target="#resiModal<?= $sp['id']; ?>">Input Resi</a>
+							<?php endif;?>
 								<!-- perhatikan ini ngambil id dari tiap data tulis di data-target=""-->
 								<button type="button" class="btn btn-sm btn-info" data-toggle="modal"
 									data-target="#detailModal<?= $sp['id']; ?>">Detail Surat</button>
+							<?php if($this->session->userdata('role_id') == 1 || $this->session->userdata('role_id') == 3) : ?>
 								<a href="<?= base_url(); ?>surat_perjalanan/hapus/<?= $sp['id']?>"
 									class="btn btn-sm btn-danger" onclick="return confirm('yakin ?')">Hapus</a>
 								<a href="<?= base_url(); ?>surat_perjalanan/edit/<?= $sp['id']?>"
 									class="btn btn-sm btn-warning" data-toggle="modal"
 									data-target="#editModal<?= $sp['id']; ?>">Edit Surat</a>
-
+							<?php endif;?>
+							</td>
 
 						</tr>
 

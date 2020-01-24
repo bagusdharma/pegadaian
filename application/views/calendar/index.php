@@ -8,6 +8,7 @@
 		}
 
 	</style>
+<?php if($this->session->userdata('role_id') == 1 || $this->session->userdata('role_id') == 3) : ?>
 
 	<div class="row mb-3">
 		<div class="col-md-6">
@@ -15,6 +16,7 @@
 				data-target="#exampleModal"><span class="fa fas-fw fa-plus"></span> Tambah Event </a>
 		</div>
 	</div>
+<?php endif;?>
 	<div id="calendar" class="header font-size">
 	</div>
 </div>

@@ -9,9 +9,9 @@ class Calendar extends CI_Controller
         if(!$this->session->userdata('NIK')){
             redirect('auth');
         }
-        if($this->session->userdata('role_id') == 2){
-            redirect('auth/blocked');
-        }
+        // if($this->session->userdata('role_id') == 2){
+        //     redirect('auth/blocked');
+        // }
         $this->load->model('Calendar_model');
         // is_logged_in();
     }
@@ -46,6 +46,9 @@ class Calendar extends CI_Controller
 
     public function insert()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         if($this->input->post('title'))
         {
             $data = array(
@@ -61,6 +64,9 @@ class Calendar extends CI_Controller
 
     public function update()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         if($this->input->post('id'))
         {
             $data = array(
@@ -74,6 +80,9 @@ class Calendar extends CI_Controller
 
     public function delete()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         if($this->input->post('id'))
         {
             $this->Calendar_model->delete_event($this->input->post('id'));

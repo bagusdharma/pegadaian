@@ -10,9 +10,9 @@ class Surat extends CI_Controller
         if(!$this->session->userdata('NIK')){
             redirect('auth');
         }
-        if($this->session->userdata('role_id') == 2){
-            redirect('auth/blocked');
-        }
+        // if($this->session->userdata('role_id') == 2){
+        //     redirect('auth/blocked');
+        // }
     }
 
     public function index()
@@ -35,6 +35,10 @@ class Surat extends CI_Controller
 
     public function tambah()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
+
         $this->form_validation->set_rules('no_berkas', 'Nomor Surat', 'required|numeric|is_unique[surat_baru.no_berkas]', array(
             'is_unique' => 'Nomor Surat Sudah dipakai'
         ));
@@ -56,6 +60,10 @@ class Surat extends CI_Controller
 
     public function hapus($id)
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
+
         $this->Surat_model->hapusSurat($id);
         $this->session->set_flashdata('message', 'Dihapus');
             redirect('surat');
@@ -68,6 +76,9 @@ class Surat extends CI_Controller
 
     public function edit()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->form_validation->set_rules('no_berkas', 'Full Surat', 'required');
         $this->form_validation->set_rules('full_number', 'Full Surat', 'required');
         $this->form_validation->set_rules('alamat_surat', 'Alamat Surat', 'required');

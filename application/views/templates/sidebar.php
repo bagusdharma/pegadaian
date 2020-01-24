@@ -58,7 +58,7 @@
       </li>
       <?php endif;?>
 
-      <?php if($this->session->userdata('role_id') == 1 || $this->session->userdata('role_id') == 3) : ?>
+     
 
          <!-- Heading -->
       <div class="sidebar-heading">
@@ -106,7 +106,6 @@
         </div>
       </li>
 
-      <?php endif;?>
       
 
       <!-- Divider -->

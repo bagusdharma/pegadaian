@@ -10,9 +10,9 @@ class Data_kamar extends CI_Controller
         if(!$this->session->userdata('NIK')){
             redirect('auth');
         }
-        if($this->session->userdata('role_id') == 2){
-            redirect('auth/blocked');
-        }
+        // if($this->session->userdata('role_id') == 2){
+        //     redirect('auth/blocked');
+        // }
         // is_logged_in();
     }
 
@@ -73,6 +73,9 @@ class Data_kamar extends CI_Controller
 
     public function tambah_kamar()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->form_validation->set_rules('no_kamar', 'Nomor Kamar', 'required');
         $this->form_validation->set_rules('asrama_id', 'Asrama', 'required');
        
@@ -87,36 +90,54 @@ class Data_kamar extends CI_Controller
 
     public function ambilKamarA()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->Kamar_model->ambilKamar();
         redirect('data_kamar/asrama_a');
     }
 
     public function resetKamarA()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->Kamar_model->resetKamar();
 		redirect('data_kamar/asrama_a');
     }
 
     public function ambilKamarB()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->Kamar_model->ambilKamar();
         redirect('data_kamar/asrama_b');
     }
 
     public function resetKamarB()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->Kamar_model->resetKamar();
 		redirect('data_kamar/asrama_b');
     }
 
     public function ambilKamarC()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->Kamar_model->ambilKamar();
         redirect('data_kamar/asrama_c');
     }
 
     public function resetKamarC()
     {
+        if($this->session->userdata('role_id') == 2){
+            redirect('auth/blocked');
+        }
         $this->Kamar_model->resetKamar();
 		redirect('data_kamar/asrama_c');
     }

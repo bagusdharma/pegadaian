@@ -25,13 +25,14 @@
 		</div>
 	</div>
 	<?php endif; ?>
-
+<?php if($this->session->userdata('role_id') == 1 || $this->session->userdata('role_id') == 3) : ?>
     <div class="row mt-3">
 		<div class="col-md-6">
 			<a href="<?= base_url(); ?>surat/tambah" class="btn btn-primary" data-toggle="modal"
 				data-target="#exampleModal">Tambah Surat</a>
 		</div>
 	</div>
+<?php endif;?>
 
 	<div class="card shadow mb-4 mt-3">
 		<div class="card-header py-3">
@@ -72,14 +73,18 @@
 								<?php endif;?>
                             </td>
 							<td>
+							<?php if($this->session->userdata('role_id') == 1 || $this->session->userdata('role_id') == 3) : ?>
+							
 								<a href="<?= base_url(); ?>surat/hapus/<?= $s['id_surat']?>"
 									class="btn btn-sm btn-outline-danger" onclick="return confirm('yakin ?')"> <span class="fas fa-fw fa-trash"></span> </a>
 								<a href="<?= base_url(); ?>surat/edit/<?= $s['id_surat']?>"
 									class="btn btn-sm btn-outline-warning" data-toggle="modal"
 									data-target="#editModal<?= $s['id_surat']; ?>"><span class="fas fa-fw fa-edit"></span></a>
+							<?php endif;?>
 								<!-- perhatikan ini ngambil id dari tiap data tulis di data-target=""-->
 								<button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal"
 									data-target="#detailModal<?= $s['id_surat']; ?>"><span class="fas fa-fw fa-info-circle"></span></a>
+							</td>
 						</tr>
 
 						<?php endforeach ?>

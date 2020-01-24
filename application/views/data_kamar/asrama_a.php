@@ -16,6 +16,7 @@
 								<div class="card-body">
 									<!-- Ambil Kamar  -->
 									<?php if($k['status'] == 0): ?>
+									<?php if($this->session->userdata('role_id') == 1 || $this->session->userdata('role_id') == 3) : ?>
 									<div class="alert alert-info text-center" role="alert">
 										<div class="row justify-content-center">
 											<!-- <form action="<?= base_url(''); ?>data_kamar/ambilKamarA/<?= $k['id'] ?>" method="POST">
@@ -27,9 +28,11 @@
 												data-target="#kamarModal<?= $k['id']; ?>">Check-In</a>
 										</div>
 									</div>
+									<?php endif?>
 									<?php else: ?>
 									<div class="alert alert-success text-center" role="alert">
 										Kamar Sudah Terisi oleh <strong> <?= $k['nama_penghuni_kamar'] ?></strong>
+										<?php if($this->session->userdata('role_id') == 1 || $this->session->userdata('role_id') == 3) : ?>
 										<div class="row justify-content-center">
 											<form action="<?= base_url(''); ?>data_kamar/resetKamarA/<?= $k['id']; ?>"
 												method="POST">
@@ -37,6 +40,7 @@
 												<input type="submit" class="btn btn-md btn-danger" value="Check-Out">
 											</form>
 										</div>
+										<?php endif;?>
 									</div>
 									<?php endif;?>
 								</div>
